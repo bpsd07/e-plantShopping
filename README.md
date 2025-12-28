@@ -4,7 +4,7 @@ Welcome to E-commerce website, where green meets serenity! This project is a sma
 
 ## 🚀 Live Demo
 
-Check out the live demo of the website [here](https://arslanr369.github.io/React-e-plantShopping).
+Check out the live demo of the website [here](https://bpsd07.github.io/e-plantShopping).
 
 ## 🌟 Features
 
@@ -42,7 +42,7 @@ This project is part of my **Full-Stack Development** course with IBM. It's a ha
 └── package.json
 
 # Clone the repository:
-git clone https://github.com/arslanr369/e-plantShopping.git
+git clone https://github.com/bpsd07/e-plantShopping.git
 
 # Contact
-For any questions or feedback, please reach out to me at arslanriaz785@gmail.com.
+For any questions or feedback, please reach out to me at kingbhanu2005@gmail.com.
