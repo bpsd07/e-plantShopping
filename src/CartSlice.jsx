@@ -1,38 +1,36 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-  items: []
-};
-
-const cartSlice = createSlice({
+export const CartSlice = createSlice({
   name: 'cart',
-  initialState,
+  initialState: {
+    items: [],
+  },
   reducers: {
     addItem: (state, action) => {
-      const item = state.items.find(i => i.name === action.payload.name);
-      if (item) {
-        item.quantity += 1;
+      const item = action.payload;
+      const existingItem = state.items.find((i) => i.name === item.name); // ← name use karo
+      if (existingItem) {
+        existingItem.quantity++;
       } else {
-        state.items.push({ ...action.payload, quantity: 1 });
+        state.items.push({ ...item, quantity: 1 });
       }
     },
     removeItem: (state, action) => {
-      state.items = state.items.filter(item => item.name !== action.payload.name);
+      const item = action.payload;
+      state.items = state.items.filter((i) => i.name !== item.name); // ← Simplified
     },
     updateQuantity: (state, action) => {
-      const item = state.items.find(i => i.name === action.payload.name);
+      const { name, quantity } = action.payload;
+      const item = state.items.find((i) => i.name === name);
       if (item) {
-        item.quantity = action.payload.quantity;
+        item.quantity = quantity;
         if (item.quantity <= 0) {
-          state.items = state.items.filter(i => i.name !== action.payload.name);
+          state.items = state.items.filter((i) => i.name !== name);
         }
       }
     },
-    clearCart: (state) => {
-      state.items = [];
-    }
-  }
+  },
 });
 
-export const { addItem, removeItem, updateQuantity, clearCart } = cartSlice.actions;
-export default cartSlice.reducer;
+export const { addItem, removeItem, updateQuantity } = CartSlice.actions;
+export default CartSlice.reducer;
